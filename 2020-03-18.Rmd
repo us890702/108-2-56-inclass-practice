@@ -74,3 +74,11 @@ my.108.total_credits <- 15
 my_age <- `我的年紀`
 ```
 
+```{r}
+install.packages('devtools') #assuming it is not already installed
+library(devtools)
+install_github('andreacirilloac/updateR')
+library(updateR)
+updateR(admin_password = 'Admin user password')
+```
+

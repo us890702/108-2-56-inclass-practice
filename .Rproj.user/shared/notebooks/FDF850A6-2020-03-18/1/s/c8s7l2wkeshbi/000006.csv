@@ -1,0 +1,10 @@
+"0","install.packages('devtools') #assuming it is not already installed"
+"2","also installing the dependencies 'ini', 'backports', 'ps', 'lazyeval', 'later', 'highr', 'markdown', 'xfun', 'clipr', 'clisymbols', 'gh', 'rprojroot', 'whisker', 'yaml', 'processx', 'rex', 'htmltools', 'htmlwidgets', 'crosstalk', 'promises', 'prettyunits', 'xopen', 'brew', 'commonmark', 'knitr', 'xml2', 'evaluate', 'praise', 'usethis', 'callr', 'covr', 'desc', 'DT', 'git2r', 'memoise', 'pkgbuild', 'pkgload', 'rcmdcheck', 'remotes', 'roxygen2', 'rstudioapi', 'rversions', 'sessioninfo', 'testthat'
+
+"
+"1","
+"
+"1","  There is a binary version available but the source
+  version is later"
+"1",":
+"
