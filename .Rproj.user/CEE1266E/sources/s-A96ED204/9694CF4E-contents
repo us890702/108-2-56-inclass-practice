@@ -189,8 +189,99 @@ typeof(majors10_factor)
 class(majors10_factor)
 ```
 
+```{r}
+levels(majors10_factor)
+```
 
 ```{r}
-levels(majors10_char)
+majors10_char
+```
+
+```{r}
+majors10_factor
+```
+
+```{r}
+num <- c(1.5, 2, 3)
+int <- c(1L, 3L, -2L)
+char <- c("1.5","2","3")
+logi <- c(T,T,F)
+
+typeof(num)
+typeof(int)
+typeof(char)
+typeof(logi)
+```
+
+```{r}
+class(num)
+class(int)
+class(char)
+class(logi)
+```
+
+```{r}
+stringInteger <- c("1","2","-11")
+class(stringInteger) # 無法進行數值運算
+as.numeric(stringInteger)+2
+# 或
+numericInterger <- as.numeric(stringInteger)
+numericInterger +2
+```
+
+```{r}
+stringInteger <- c(1,2,3)
+class(stringInteger) # 無法進行數值運算
+stringInteger+2
+```
+
+```{r}
+studentId <- c(410773002, 410773015)
+class(studentId)
+```
+
+```{r}
+as.character(studentId)
+studentId <- as.character(studentId)
+```
+
+## 台北 2020-03-18 13:52:40
+```{r}
+tpeDateTime <- ymd_hms("2020-03-18 13:52:40",tz="Asia/Taipei")
+tpeDateTime
+typeof(tpeDateTime)
+as.double(tpeDateTime)
+```
+
+## 葡萄牙 Mar.18, 2020, 05:52:40
+```{r}
+pgDateTime <- mdy_hms("Mar.18, 2020, 05:52:40",tz="Europe/Lisbon")
+pgDateTime
+typeof(pgDateTime)
+as.Double(tpeDateTime)
+```
+
+```{r}
+with_tz(tpeDateTime, tzone="UTC")
+with_tz(pgDateTime, tzone="UTC")
+```
+
+```{r}
+studentTime <- c(ymd_hms("2020-03-04T06:56:29Z"), ymd_hms("2020-03-11 14:16:43",tz="Asia/Taipei"),
+ymd_hms("2020-03-11 14:34:33",tz="Asia/Taipei")
+)
+studentTime
+
+#或者可寫
+studentTime <- c(ymd_hms("2020-03-04T06:56:29Z"), ymd_hms(c("2020-03-11 14:16:43","2020-03-11 14:34:33"),tz="Asia/Taipei")
+)
+```
+
+```{r}
+browseURL("https://docs.google.com/spreadsheets/d/1EAG49qDKPWWi0ebkVr29TLrvVnoBPfkvxYY-J3xLAHY/edit#gid=458686645")
+```
+## 可一次把全部轉換成巴黎時間
+```{r}
+with_tz(studentTime,tzone="Europe/paris")
 ```
 
