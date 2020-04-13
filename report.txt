@@ -1,0 +1,139 @@
+CLICOLOR_FORCE
+              1
+DISPLAY       :0
+DYLD_FALLBACK_LIBRARY_PATH
+              /Library/Frameworks/R.framework/Resources/lib:/Users/us890702/lib:/usr/local/lib:/usr/lib:::/lib:/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server
+EDITOR        vi
+GIT_ASKPASS   rpostback-askpass
+HOME          /Users/us890702
+LANG          en_TW.UTF-8
+LC_CTYPE      en_TW.UTF-8
+LN_S          ln -s
+LOGNAME       us890702
+MAKE          make
+PAGER         /usr/bin/less
+PATH          /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/us890702/Desktop/RStudio.app/Contents/MacOS/rpostback:/Users/us890702/Desktop/RStudio.app/Contents/MacOS/postback
+RMARKDOWN_MATHJAX_PATH
+              /Users/us890702/Desktop/RStudio.app/Contents/Resources/resources/mathjax-26
+RSTUDIO       1
+RSTUDIO_CONSOLE_COLOR
+              256
+RSTUDIO_CONSOLE_WIDTH
+              48
+RSTUDIO_PANDOC
+              /Users/us890702/Desktop/RStudio.app/Contents/MacOS/pandoc
+RSTUDIO_SESSION_PORT
+              10791
+RSTUDIO_USER_IDENTITY
+              us890702
+RSTUDIO_WINUTILS
+              bin/winutils
+RS_RPOSTBACK_PATH
+              /Users/us890702/Desktop/RStudio.app/Contents/MacOS/rpostback
+RS_SHARED_SECRET
+              c100ab7a-99f2-4fbb-99cf-7854e1af277c
+R_BROWSER     /usr/bin/open
+R_BZIPCMD     /usr/bin/bzip2
+R_DOC_DIR     /Library/Frameworks/R.framework/Resources/doc
+R_GZIPCMD     /usr/bin/gzip
+R_HOME        /Library/Frameworks/R.framework/Resources
+R_INCLUDE_DIR
+              /Library/Frameworks/R.framework/Resources/include
+R_LIBS_SITE   
+R_LIBS_USER   ~/Library/R/3.6/library
+R_PAPERSIZE   a4
+R_PDFVIEWER   /usr/bin/open
+R_PLATFORM    x86_64-apple-darwin15.6.0
+R_PRINTCMD    lpr
+R_QPDF        /Library/Frameworks/R.framework/Resources/bin/qpdf
+R_RD4PDF      times,inconsolata,hyper
+R_SESSION_TMPDIR
+              /var/folders/ky/d2h0dg0x1ll_frnvq7sn76vc0000gn/T//RtmpmilK7D
+R_SHARE_DIR   /Library/Frameworks/R.framework/Resources/share
+R_STRIP_SHARED_LIB
+              strip -x
+R_STRIP_STATIC_LIB
+              strip -S
+R_SYSTEM_ABI
+              osx,gcc,gxx,gfortran,gfortran
+R_TEXI2DVICMD
+              /usr/local/bin/texi2dvi
+R_UNZIPCMD    /usr/bin/unzip
+R_ZIPCMD      /usr/bin/zip
+SED           /usr/bin/sed
+SHELL         /bin/bash
+SQLITE_EXEMPT_PATH_FROM_VNODE_GUARDS
+              /Users/us890702/Library/WebKit/Databases
+SSH_ASKPASS   rpostback-askpass
+SSH_AUTH_SOCK
+              /private/tmp/com.apple.launchd.5a0bplWbIt/Listeners
+TAR           /usr/bin/tar
+TERM          xterm-256color
+TMPDIR        /var/folders/ky/d2h0dg0x1ll_frnvq7sn76vc0000gn/T/
+USER          us890702
+XPC_FLAGS     0x0
+XPC_SERVICE_NAME
+              0
+__CF_USER_TEXT_ENCODING
+              0x1F5:0x2:0x35
+__KMP_REGISTERED_LIB_41657
+              0x1018e5c20-cafe614e-libomp.dylib
+__KMP_REGISTERED_LIB_42451
+              0x1018e5c20-cafee79b-libomp.dylib
+[1] "C"
+<locale>
+Numbers:  123,456.78
+Formats:  %AD / %AT
+Timezone: UTC
+Encoding: UTF-8
+<date_names>
+Days:   Sunday (Sun), Monday (Mon), Tuesday (Tue),
+        Wednesday (Wed), Thursday (Thu),
+        Friday (Fri), Saturday (Sat)
+Months: January (Jan), February (Feb), March
+        (Mar), April (Apr), May (May),
+        June (Jun), July (Jul), August
+        (Aug), September (Sep), October
+        (Oct), November (Nov), December
+        (Dec)
+AM/PM:  AM/PM
+R version 3.6.3 (2020-02-29)
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+Running under: macOS Catalina 10.15.1
+
+Matrix products: default
+BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+
+Random number generation:
+ RNG:     Mersenne-Twister 
+ Normal:  Inversion 
+ Sample:  Rounding 
+ 
+locale:
+[1] C
+
+attached base packages:
+[1] stats     graphics  grDevices utils    
+[5] datasets  methods   base     
+
+other attached packages:
+[1] jsonlite_1.6.1      dplyr_0.8.5        
+[3] httr_1.4.1          readr_1.3.1        
+[5] lubridate_1.7.4     googlesheets4_0.1.1
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.4       knitr_1.28      
+ [3] magrittr_1.5     hms_0.5.3       
+ [5] tidyselect_1.0.0 R6_2.4.1        
+ [7] rlang_0.4.5      stringr_1.4.0   
+ [9] tools_3.6.3      xfun_0.12       
+[11] withr_2.1.2      askpass_1.1     
+[13] yaml_2.2.1       openssl_1.4.1   
+[15] assertthat_0.2.1 tibble_2.1.3    
+[17] gargle_0.4.0     crayon_1.3.4    
+[19] purrr_0.3.3      vctrs_0.2.4     
+[21] fs_1.3.2         curl_4.3        
+[23] glue_1.3.2       stringi_1.4.6   
+[25] compiler_3.6.3   pillar_1.4.3    
+[27] cellranger_1.1.0 pkgconfig_2.0.3 

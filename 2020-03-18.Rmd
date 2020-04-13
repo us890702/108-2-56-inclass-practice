@@ -258,7 +258,8 @@ as.double(tpeDateTime)
 pgDateTime <- mdy_hms("Mar.18, 2020, 05:52:40",tz="Europe/Lisbon")
 pgDateTime
 typeof(pgDateTime)
-as.Double(tpeDateTime)
+as.numeric(tpeDateTime)
+as.numeric(tpeDateTime)-as.numeric(pgDateTime)
 ```
 
 ```{r}

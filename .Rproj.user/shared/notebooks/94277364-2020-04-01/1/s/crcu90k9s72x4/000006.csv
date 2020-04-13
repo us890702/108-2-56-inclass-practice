@@ -1,0 +1,4 @@
+"0","save (`小明108學年課表D`,file=""today.Rda"")"
+"2","Error in save(小明108學年課表D, file = ""today.Rda"") : 
+  object ‘小明108學年課表D’ not found
+"

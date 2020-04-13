@@ -141,6 +141,56 @@ toJSON(commit)
 ```
 
 ```{r}
-save ( commit,`小明108學年課表D`,listExample,  file="today.Rda")
+save (`小明108學年課表D`,file="today.Rda")
+```
+
+```{r}
+library(lubridate)
+`天氣預報` <- list(
+  `台北市`=list(
+    date=c(
+    today="2020-03-31",
+    tomorrow="2020-04-01"),
+    highest=25,
+    lowest=18
+     ),
+  `新北市`=list(
+    date=c(
+    today="2020-03-31",
+    tomorrow="2020-04-01"),
+    highest=24,
+    lowest=15
+     ) 
+)
+```
+
+```{r}
+`天氣預報` <-list(
+  `台北市` = list(
+    date = c(
+      today = "2020-03-31", 
+      tomorrow = "2020-04-01"
+    ), 
+    highest = 25, 
+    lowest = 18
+  ), 
+  `新北市` = list(
+    date = c(
+      today = "2020-03-31", 
+      tomorrow = "2020-04-01"
+    ), 
+    higest = 24, 
+    lowest = 15
+  )
+)
+print(`天氣預報`)
+```
+
+```{r}
+save(`天氣預報`,file="myData.Rda")
+```
+
+```{r}
+ Sys.setlocale(locale="zh_TW.UTF-8")
 ```
 
