@@ -141,7 +141,7 @@ str(newTaipeiCityVaccine[["result"]], max.level = 1)
 
 ## 選多個元素
 ```{r}
-vectorExample
+vectorExample <- c(1,5,3)
 vectorExample[c(1,3)]
 vectorExample[c(3,2,1)] # 產生重新排列效果
 ```
@@ -207,6 +207,7 @@ selectedMarkets <- rep(F,14) # repeat F by 14 times
 print(selectedMarkets)
 selectedMarkets[c(1,5,10,14)] <- TRUE # 這邊像是一個取代的動作
 print(selectedMarkets)
+str(taipeiNightMarkets[c(selectedMarkets)], max.level = 1)
 ```
 
 ```{r}
@@ -254,10 +255,21 @@ majors <- c("經濟學系","經濟學系","社會學系","社工系","經濟學�
 names <- c("小英", "小美", "大雄","阿華", "阿尼")
 gender <- c("F","F","M","F","M")
 
-econOnly <- majors[c(1,2,5)]
-econOnly
+#創造出只要“經濟學系”學生的邏輯向量，econOnly。
+econOnly <- c(T,T,F,F,T)
+majors[econOnly]
+
+#選出econOnly的names與gender。
 names[econOnly]
 gender[econOnly]
+
+#在econOnly的gender下創造出只要“F”的邏輯向量, econFemaleOnly。
+econFemaleOnly <- c(T,T,F)
+gender[econOnly][econFemaleOnly]
+
+#選出names中為“經濟學系”且“F”的姓名。
+names[econOnly][econFemaleOnly]
+
 ```
 
 
