@@ -1,0 +1,8 @@
+"0","Pikachu_stats <- as.numeric(c(Pikachu$baseStats$atk,Pikachu$baseStats$def,Pikachu$baseStats$hp))"
+"0","Pikachu_stats"
+"1","[1]"
+"1"," 112"
+"1","  96"
+"1"," 111"
+"1","
+"
