@@ -120,7 +120,8 @@ currentLevels
 請寫下「一個」字串的regex（class character, length=1）稱之為bSchoolRegex,
 
 ```{r ans23}
-# bSchoolRegex
+bSchoolRegex <- "(金融與?合?作?經?營?學?系|休閒?與?運動?管?理?學?系)"
+bSchoolRegex
 ```
 
 使得執行以下程序後currentLevels裡屬商學院的系都會變成"商學院"。（其實此題也可以要求第一題的限制，但怕難度太高這題則不設「系名字元不重覆」的限制）
@@ -136,7 +137,9 @@ str_replace(currentLevels,bSchoolRegex,"商學院")
   
 這題不限方法或regex使用次數。（答案物件differentMajors本身, class factor）
 ```{r ans24}
-# differentMajors
+levels(differentMajors) <- c("不動系","公行系","公行系","公行系","金融系","金融系","金融系","經濟系","經濟系","社工系","社工系","社會系" ,"社會系" ,"休運系","休運系")
+
+differentMajors
 ```
 
 
@@ -152,6 +155,17 @@ str_replace(currentLevels,bSchoolRegex,"商學院")
 即levels(school)會有「公共事務學院、商學院、社科院」。
 
 ```{r ans25}
-# school
+school <- differentMajors
+levels(school) -> level1
+b_regex <- "休運系|金融系"
+e_regex <- "經濟系|社會系|社工系"
+d_regex <- "公行系|不動系"
+level1 <- str_replace(level1, b_regex,"商學院")
+level1 <- str_replace(level1, e_regex,"社科院")
+newLevels <- str_replace(level1, d_regex,"公共事務學院")
+levels(school) <- newLevels
+class(school)
+levels(school)
+school
 ```
 

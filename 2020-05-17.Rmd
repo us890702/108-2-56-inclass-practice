@@ -104,6 +104,7 @@ names(population) # 元素名稱是台灣各縣市
 ```
 ##2.留下levels中有的popluation元素
 ```{r}
+ 
 levels(covid19$縣市) # 是名稱字串向量
 
 # 由於population元素值有names，可以用`[名稱字串向量]`取出所要的
@@ -305,7 +306,17 @@ levels(covid19$性別) <- c("Female","Male")
 ##3.linename的“路線”字眼後面接的是營運時間，如“A11路線(一、四)下午”的linename, 它的營運時間為“(一、四)下午”。若沒寫時間的路線，它的營運時間為“全天”。請在garbageRoutes新增time元素，其元素值為對應linename所隱含的營運時間。（garbageRoutes$time為factor class, levels會有“(一、四)下午”, “下午”, “下午(1.4版)”, “晚上”, 及“全天”）
 ##4.將garbageRoutes$time的levels中的“下午(1.4版)”改成“下午”。
 ```{r}
-jsonlite::fromJSON("https://data.ntpc.gov.tw/od/data/api/EDC3AD26-8AE7-4916-A00B-BC6048D19BF8?$format=json") ->
-  garbageRoutes
+jsonlite::fromJSON("https://data.ntpc.gov.tw/od/data/api/EDC3AD26-8AE7-4916-A00B-BC6048D19BF8?$format=json") -> garbageRoutes
+  
+garbageRoutes$route <- factor(str_extract(garbageRoutes$linename,"[:alnum:]+路線"))
+class(garbageRoutes$route)
+levels(garbageRoutes$route)
+newLevels <- names(sort(table(garbageRoutes$route)))
+garbageRoutes$route <- factor(garbageRoutes$route,levels = newLevels)
+garbageRoutes$time <- str_extract(garbageRoutes$linename,
+            "(?<=線)[:graph:]+ ")
+garbageRoutes$time[is.na(garbageRoutes$time)]<- "全天"
+garbageRoutes$time <- factor(garbageRoutes$time)
+levels(garbageRoutes$time)[[3]] <- "下午"
 ```
 

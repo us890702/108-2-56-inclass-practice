@@ -207,7 +207,7 @@ jsonlite::fromJSON("https://www.dropbox.com/s/3uijub7xheib405/list_victimAges_fe
 ```{r}
 str(list_victimAges_female)
 sum(list_victimAges_female$數目)
-##因為裡面有NA三加起來是NA,所以要remove NA
+##因為裡面有NA所以加起來是NA,所以要remove NA
 sum(list_victimAges_female$數目, na.rm = T)
 ```
 
@@ -270,6 +270,10 @@ pick_fromTaipeiMetro <- example$residence %in% set_TaipeiMetro
 example$name[pick_fromTaipeiMetro]
 ```
 
+```{r}
+source("https://www.dropbox.com/s/qsrw069n94k61lj/transcript100to103_list.R?dl=1")
+```
+
 ##創造 可選出來自法商學院的「要/不要」向量，pick_lawBusiness。
 ```{r}
 str(transcript100to103)
@@ -306,6 +310,11 @@ y3 <- c(NA,"小華")
 
 ```{r}
 is.na(x2)
+```
+```{r}
+c(22,NA,18) -> a
+a==NA
+is.na(a)
 ```
 
 ```{r}
