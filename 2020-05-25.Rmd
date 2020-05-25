@@ -1,0 +1,238 @@
+---
+title: "2020-0525"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+library(purrr)
+```
+
+```{r}
+example <- list(
+  name=c("小明","小花","小新","美美"),
+  height=c(175,166,170,160),
+  weight=c(77,NA,60,43),
+  birthday=lubridate::ymd(c("1998-03-11","1999-12-22","1995-08-22","2001-10-10")),
+  hobby=c("美食 旅遊","旅遊 時尚","3C 美食","音樂 旅遊"),
+  residence=c("Taipei","New Taipei","Taichung","Kaohsiung"),
+  allowance=factor(c("0-1000","1001-2000","2000+","1001-2000")),
+  bloodType=c("A","B","B","O")
+)
+```
+
+
+```{r}
+ pick_xin <- example$name == "小新"
+data_selected <- 
+  list(
+    name=example$name[pick_xin],
+    weight=example$weight[pick_xin],
+    height=example$height[pick_xin],
+    hobby=example$hobby[pick_xin],
+    residence=example$residence[pick_xin],
+    allowance=example$allowance[pick_xin],
+    bloodType=example$bloodType[pick_xin]
+  )
+```
+
+```{r}
+map(example, ~.x[pick_xin]) -> 
+  data_selected 
+  
+data_selected
+```
+
+```{r}
+jsonlite::fromJSON("https://www.dropbox.com/s/6252gbdnv9owljm/dance.json?dl=1", simplifyDataFrame = F) -> dance
+```
+
+```{r}
+# 第一個dance表演名稱
+dance[[1]]$title
+# 第二個dance表演名稱
+dance[[2]]$title
+```
+
+```{r}
+Sys.setlocale(locale="zh_TW.UTF-8") 
+```
+
+```{r}
+library(purrr)
+map(dance,~.x$title) -> dance_title
+```
+
+```{r}
+dance[[1]]$showInfo
+length(dance[[1]]$showInfo)
+
+dance[[2]]$showInfo
+length(dance[[1]]$showInfo)
+```
+
+```{r}
+length(dance[[1]]$showInfo)
+length(dance[[2]]$showInfo)
+# :
+length(dance[[34]]$showInfo)
+```
+
+```{r}
+map(dance,~length(.x$showInfo)) -> dance_showInfoLength
+```
+
+```{r}
+str(dance[[4]]$showInfo)
+```
+
+```{r}
+# 這個表演第1個場次的訊息
+dance[[4]]$showInfo[[1]]$time
+# 這個表演第2個場次的訊息
+dance[[4]]$showInfo[[2]]$time
+```
+
+
+```{r}
+map(dance[[4]]$showInfo, ~ .x$time) ->
+  
+list_showTimes_dance4
+```
+##找出第8個表演的所有場次時間(time)和地點(location):
+```{r}
+dance[[8]]$showInfo[[1]]$time
+map(dance[[8]]$showInfo,~.x$time)
+map(dance[[8]]$showInfo,~.x$location)
+```
+
+```{r}
+##新北市公車路線清單
+jsonlite::fromJSON("https://www.dropbox.com/s/5nozcipa3rzrrmy/busRoutes.json?dl=1", simplifyDataFrame = F) ->
+  busRoutes
+##請抓出每條路線的Id(路線代碼)、providerId(業者代碼)、providerName(業者中文名稱)、nameZh(中文名稱)。
+str(busRoutes)
+busRoutes[[1]]$Id
+map(busRoutes,~.x$Id)
+map(busRoutes,~.x$providerId)
+map(busRoutes,~.x$providerName)
+map(busRoutes,~.x$nameZh)
+
+```
+
+```{r}
+##一般天氣預報-今明36小時天氣預報
+jsonlite::fromJSON("https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=rdec-key-123-45678-011121314&format=JSON") ->
+  weather_next36hours
+##2.1 找出有氣象預報資訊的縣市名稱（locationName欄位）
+str(weather_next36hours)
+weather_next36hours$cwbopendata$dataset$location$locationName
+
+##2.2 氣象局針對每個縣市提供了不同氣象因子在未來三個時段的預報。每個都市的氣象因子預報有那些，以第一個都市為例，它存在
+
+
+
+weather_next36hours$cwbopendata$dataset$location$weatherElement[[1]]$elementName 
+##請取出每個縣市有提供的氣象預報因子名稱。（個別名稱的意思要去看欄位說明文件）
+map(weather_next36hours$cwbopendata$dataset$location$weatherElement,~.x$elementName )
+##2.3 請抓出每縣市在第一個預告時段的
+
+##預告開始時間
+weather_next36hours$cwbopendata$dataset$location$weatherElement[[1]]$time[[1]]$startTime
+##預告結束時間
+
+##這段時間的最高氣溫
+map(weather_next36hours$cwbopendata$dataset$location$weatherElement, ~ .x$time[[1]]$startTime)
+map(weather_next36hours$cwbopendata$dataset$location$weatherElement, ~ .x$time[[1]]$endTime)
+map(weather_next36hours$cwbopendata$dataset$location$weatherElement, ~ max(.x$time[[1]]$parameter$parameterValue))
+```
+
+##第五章
+```{r}
+threeHeigths <- c(Gary=178, John=182, Cam=175)
+```
+##寫法一
+```{r}
+# 先排序由大到小，
+sort(threeHeigths, decreasing=T) -> sorted_heights
+
+# 把排好的人名取出
+names(sorted_heights) -> sorted_persons
+
+# 接著取出第一個位置的人名
+sorted_persons[[1]] -> highestPerson
+```
+##寫法二
+```{r}
+names(sort(threeHeigths, decreasing = T))[[1]] -> highestPerson
+```
+
+```{r}
+library(magrittr)
+```
+
+```{r}
+sort(threeHeigths, decreasing=T) %>% 
+names(.) %>%
+.[[1]] -> highestPerson
+```
+
+```{r}
+# 由cities創出每個元素對應的北部、東部、中部region factor
+cities <- factor(c("台北","花蓮","台東","台中"))
+levels(cities)
+```
+
+```{r}
+region <- cities
+library(stringr)
+# 以下為一連串的pipe operation
+levels(region) -> currentLevels
+str_replace(currentLevels,"台北","北部") -> currentLevels1
+str_replace(currentLevels1,"花蓮|台東","東部") -> currentLevels2
+str_replace(currentLevels2,"台中","中部") -> regionLevels
+regionLevels -> levels(region)
+```
+
+```{r}
+levels(region) %>% 
+  str_replace(.,"台北","北部") %>%
+  str_replace(.,"花蓮|台東","東部") %>%
+  str_replace(.,"台中","中部") ->
+  levels(region)
+##不能
+levels(region) %>% 
+  str_replace(.,"台北","北部") %>%
+  str_replace(.,"花蓮|台東","東部") %>%
+  str_replace(.,"台中","中部") %>%
+  . -> levels(region)
+##因為pipe能用是基於串到下一步是函數，但後面會教可以用的辦法。
+```
+
+```{r}
+
+```
+
