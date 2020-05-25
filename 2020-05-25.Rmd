@@ -233,6 +233,10 @@ levels(region) %>%
 ```
 
 ```{r}
+num <- c(2,97,22,15,7)
 
+# 選出大於50的數字
+(num > 50) -> pick_big
+num[pick_big]
 ```
 
