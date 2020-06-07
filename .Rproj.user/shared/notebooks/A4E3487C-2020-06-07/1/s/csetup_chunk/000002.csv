@@ -1,0 +1,8 @@
+"0","knitr::opts_chunk$set(echo = TRUE)"
+"2","Warning message:
+"
+"2","In load(path, envir = .GlobalEnv) :"
+"2","
+ "
+"2"," strings not representable in native encoding will be translated to UTF-8
+"

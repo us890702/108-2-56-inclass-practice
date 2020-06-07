@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591514174057.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2F1D3BF9",
+    "lastKnownWriteTime" : 3420330182928498688,
+    "last_content_update" : 1591514174057,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "DEFB0FD7",
+        "caption" : "busStopsInfo",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=busStopsInfo&cache_key=DEFB0FD7",
+        "displayedObservations" : 30,
+        "environment" : "",
+        "object" : "busStopsInfo",
+        "preview" : 0,
+        "totalObservations" : 30,
+        "variables" : 14
+    },
+    "relative_order" : 14,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
