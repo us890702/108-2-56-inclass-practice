@@ -1,0 +1,2 @@
+"0","# 先執行此行輸入學號"
+"0","readline(prompt = ""請輸入你的學號"") -> studentId "
