@@ -53,7 +53,11 @@ ntpc_building_parking
 ### 1.2 單位查詢——查無此單位
 請寫一個叫做no_found的function，它的功能是若輸入關鍵字(key_word)沒有對應的名稱時要回傳warning message(內容為"No Found")。
 ```{r ans12}
-# no_found
+no_found <- function(key_word) {
+  warning("No Found")
+}
+
+no_found
 ```
 
 ### 1.3 單位查詢
@@ -61,7 +65,15 @@ ntpc_building_parking
 
 如果可以寫出來的話代表你只差介面就寫出一個查詢面板了呢!做漂亮一點搞不好能賣給新北市政府喔XD
 ```{r ans13}
-# search_engine
+search_engine <- function(key_word)  {
+   if(any(str_detect(ntpc_building_info$type,key_word) == T) | any(str_detect(ntpc_building_info$floer,key_word) == T) | any(str_detect(ntpc_building_info$name,key_word) == T) | any(str_detect(ntpc_building_info$name,key_word) == T) | any(str_detect(ntpc_building_info$name_en,key_word) == T)){
+  ntpc_building_parking
+} else {
+  no_found(key_word)
+}
+}
+
+search_engine
 ```
 
 ## 2 最佳消費組合
@@ -74,7 +86,18 @@ read_csv("https://www.dropbox.com/s/8mlf6cory32q1eq/bear.csv?dl=1") ->
 已知最佳消費組合是最大化總效用，請寫一個叫做best_choice的function，它的功能是輸入某給定的消費組合(choice)後回傳應該多消費甚麼、少消費甚麼或是維持現在的消費組合，如輸入best_choice(bear[6,])要回傳"維持現有消費組合"。
 回傳值請設定為"少消費蛋糕、多消費甜甜圈"、"多消費蛋糕、少消費甜甜圈"和"維持現有消費組合"，回傳就好，不用以warning message的方式呈現。
 ```{r ans2}
-# best_choice
+best_choice <- function(choice) {
+  if(choice[[1]] == choice[[2]]){
+  print("維持現有消費組合")
+} else if(choice[[1]] > choice[[2]]){
+  print("少消費蛋糕、多消費甜甜圈")
+} else if(choice[[1]] < choice[[2]]){
+  print("多消費蛋糕、少消費甜甜圈")
+} 
+}
+
+best_choice(bear[6,])
+best_choice
 ```
 
 ## 3. 自動排位系統
@@ -87,7 +110,13 @@ browseURL("https://docs.google.com/spreadsheets/d/1bdb4XPEwrQByujQ79PeQ5D0V_157o
 ### 3.1 seatingChart
 創造一個list of 7，每個元素皆有名稱分別為"row1","row2",...,"row7"，此外個別元素均為class integer vector，其中每個vector長度為9，且這9個元素有個自的名字依序是"7","5","A1","3","1","2","4","A2","6"。每個row元素除名字為"A1","A2"為-1外，其餘放0。此list of 7答案物件名為seatingChart。
 ```{r ans31}
-# seatingChart
+a <- 
+seatingChart <- list( row1 = c( "7" = 0L,"5" = 0L,"A1" = -1L,"3"= 0L,"1"=0L,"2"=0L,"4"=0L,"A2"= -1L,"6"=0L) , row2 = c( "7" = 0L,"5" = 0L,"A1" = -1L,"3"= 0L,"1"=0L,"2"=0L,"4"=0L,"A2"= -1L,"6"=0L) , row3 = c( "7" = 0L,"5" = 0L,"A1" = -1L,"3"= 0L,"1"=0L,"2"=0L,"4"=0L,"A2"= -1L,"6"=0L) , row4 = c( "7" = 0L,"5" = 0L,"A1" = -1L,"3"= 0L,"1"=0L,"2"=0L,"4"=0L,"A2"= -1L,"6"=0L), row5 = c( "7" = 0L,"5" = 0L,"A1" = -1L,"3"= 0L,"1"=0L,"2"=0L,"4"=0L,"A2"= -1L,"6"=0L) ,row6 =c( "7" = 0L,"5" = 0L,"A1" = -1L,"3"= 0L,"1"=0L,"2"=0L,"4"=0L,"A2"= -1L,"6"=0L) ,row7 = c( "7" = 0L,"5" = 0L,"A1" = -1L,"3"= 0L,"1"=0L,"2"=0L,"4"=0L,"A2"= -1L,"6"=0L) )
+                               
+
+  
+  
+seatingChart
 ```
 
 ### 3.2 list_availableSeats
@@ -99,7 +128,19 @@ Argument:
 
 Value: a character class of vector, 代表seatingChart中所有可以選的座位，一個座位是一個元素值並以"row?-?"方式表示，如網頁圖中x的位置會是"row3-5"
 ```{r ans32}
-# list_availableSeats
+
+list_availableSeats <- function(seatingChart) {
+c(paste0("row1","-" , names(seatingChart$row1 [row1 == 0])), 
+  paste0("row2","-" , names(seatingChart$row2[seatingChart$row2 == 0])),
+  paste0("row3","-" , names(seatingChart$row3[seatingChart$row3 == 0])),
+  paste0("row4","-" , names(seatingChart$row4[seatingChart$row4 == 0])),
+  paste0("row5","-" , names(seatingChart$row5[seatingChart$row5 == 0])),
+  paste0("row6","-" , names(seatingChart$row6[seatingChart$row6 == 0])),
+  paste0("row7","-" , names(seatingChart$row7[seatingChart$row7 == 0]))
+) -> availableSeats
+  return(availableSeats)
+}
+list_availableSeats
 ```
 
 ### 3.3 update_seatingChart
@@ -114,7 +155,18 @@ Arguments:
 Value：a list, 如原始的seatingChart結構，但被選走的位置的值會由0改成-1。若selectedSeat不在可選的位置裡則以warning出現"很抱歉您所選的位置已無法選"，回傳值會是原本的seatingChart。
 
 ```{r ans33}
-# update_seatingChart
+selectedSeat <- "row5-5"
+update_seatingChart <- function(seatingChart, selectedSeat) { if(any(selectedSeat %in% list_availableSeats(seatingChart ))){
+  pick <- str_extract(selectedSeat ,"[0-9]-[0-9]")
+  unlist(str_split(pick , "-")) -> picknew
+  str_replace(seatingChart,seatingChart[picknew[[1]]][picknew[[2]] == names(seatingChart[picknew[[1]]])],-1L)
+} else {
+  warning("很抱歉您所選的位置已無法選")
+  print(seatingChart)
+}
+  
+}
+update_seatingChart
 ```
 
 ### 3.4 assign_seats
@@ -139,7 +191,21 @@ Value: a vector of class character. 每個元素值是個"row?-?"形式的座位
 你可以用assign_seats(animal15, seatingChart)測試是否15位森友都有位置。
 
 ```{r ans34}
-# assign_seats
+assign_seats <- function(people, seatingChart) {
+  c(paste0("row1","-" , names(seatingChart$row1 [row1 == 0])), 
+  paste0("row2","-" , names(seatingChart$row2[seatingChart$row2 == 0])),
+  paste0("row3","-" , names(seatingChart$row3[seatingChart$row3 == 0])),
+  paste0("row4","-" , names(seatingChart$row4[seatingChart$row4 == 0])),
+  paste0("row5","-" , names(seatingChart$row5[seatingChart$row5 == 0])),
+  paste0("row6","-" , names(seatingChart$row6[seatingChart$row6 == 0])),
+  paste0("row7","-" , names(seatingChart$row7[seatingChart$row7 == 0]))
+) -> availableSeats
+  sample(availableSeats,length(people)) -> assign_seat
+  names(assign_seat) <- people
+  print(assign_seat)
+}
+assign_seats(animal15, seatingChart)
+assign_seats
 ```
 
 ### 3.5 remove_seats_covid19
@@ -154,6 +220,7 @@ Value: 如seatingChart定義，但它會把input argument seatingChart中每一�
 (可能有用工具：relational operator如==, >=, %in%, 如判斷結果logical vector放到which()函數會回傳logical vector中元素值為TRUE的位置。）
 
 ```{r ans35}
+remove_seats_covid19 <- function(seatingChart)
 # remove_seats_covid19
 ```
 
